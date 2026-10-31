@@ -1,7 +1,7 @@
 local Lighting = game:GetService("Lighting")
 local Terrain = workspace:FindFirstChildOfClass("Terrain")
 
--- 1. Setting Lighting jadi HD ringan
+-- Setting Lighting jadi HD ringan
 Lighting.Brightness = 2
 Lighting.ClockTime = 14
 Lighting.FogEnd = 100000
@@ -9,16 +9,15 @@ Lighting.GlobalShadows = false
 Lighting.OutdoorAmbient = Color3.fromRGB(128,128,128)
 Lighting.EnvironmentDiffuseScale = 0
 Lighting.EnvironmentSpecularScale = 0
-Lighting.ShadowDensity = 0
 
--- 2. Matikan efek berat
+-- Matikan efek berat
 for _, v in pairs(Lighting:GetChildren()) do
     if v:IsA("BlurEffect") or v:IsA("SunRays") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
         v.Enabled = false
     end
 end
 
--- 3. Botakin Terrain (yang bikin lag)
+-- Botakin Terrain (yang bikin lag)
 if Terrain then
     Terrain.WaterWaveSize = 0
     Terrain.WaterWaveSpeed = 0
@@ -26,7 +25,7 @@ if Terrain then
     Terrain.WaterTransparency = 0
 end
 
--- 4. Botakin semua part biar smooth
+-- Botakin semua part biar smooth
 for _, v in pairs(workspace:GetDescendants()) do
     if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
         v.Material = Enum.Material.SmoothPlastic
